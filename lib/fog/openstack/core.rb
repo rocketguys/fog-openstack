@@ -54,9 +54,8 @@ module Fog
 
           hh = headers(params[:headers])
 
-          Rails.logger.info "\n==== Fod request ===="
+          Rails.logger.info "\n==== request headers for #{@path}/#{params[:path]} ===="
           Rails.logger.info hh
-          Rails.logger.info "====================\n"
 
           response = @connection.request(
             params.merge(
@@ -87,6 +86,11 @@ module Fog
           # TODO: remove parse_json in favor of :raw_body
           response.body = Fog::JSON.decode(response.body) if parse_json && !params[:raw_body]
         end
+
+
+        Rails.logger.info "---- response ----"
+        Rails.logger.info response.body
+        Rails.logger.info "====================\n"
 
         response
       end
