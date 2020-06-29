@@ -60,7 +60,6 @@ module Fog
           options['Access-Control-Allow-Origin'] ||= access_control_allow_origin if access_control_allow_origin
           options['Origin'] ||= origin if origin
           options['Content-Encoding'] ||= content_encoding if content_encoding
-          Rails.logger.info(">>> copy: #{options}")
           service.copy_object(directory.key, key, target_directory_key, target_file_key, options)
           target_directory = service.directories.new(:key => target_directory_key)
           target_directory.files.get(target_file_key)
