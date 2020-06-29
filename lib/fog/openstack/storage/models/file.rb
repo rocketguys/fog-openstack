@@ -56,7 +56,7 @@ module Fog
 
         def copy(target_directory_key, target_file_key, options = {})
           requires :directory, :key
-          options['Content-Type'] ||= content_type if content_type
+          # options['Content-Type'] ||= content_type if content_type
           options['Access-Control-Allow-Origin'] ||= access_control_allow_origin if access_control_allow_origin
           options['Origin'] ||= origin if origin
           options['Content-Encoding'] ||= content_encoding if content_encoding
