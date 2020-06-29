@@ -52,9 +52,15 @@ module Fog
         begin
           authenticate! if @expires && (@expires - Time.now.utc).to_i < 60
 
+          hh = headers(params[:headers])
+
+          Rails.logger.info "\n==== Fod request ===="
+          Rails.logger.info hh
+          Rails.logger.info "====================\n"
+
           response = @connection.request(
             params.merge(
-              :headers => headers(params[:headers]),
+              :headers => hh,
               :path    => "#{@path}/#{params[:path]}"
             )
           )
