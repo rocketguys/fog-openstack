@@ -136,7 +136,6 @@ module Fog
         end
 
         {
-          'Content-Type' => 'application/json',
           'Accept'       => 'application/json',
           'X-Auth-Token' => @auth_token
         }.merge!(additional_headers)
